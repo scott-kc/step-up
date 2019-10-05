@@ -7,6 +7,7 @@ import History from "../history/History";
 import {Col, Row} from "react-bootstrap";
 import ResetPassword from "../login/ResetPassword";
 import SignUp from "../login/SignUp";
+import SignIn from "../login/SignIn";
 
 class StepUpRouter extends Component {
     constructor(props) {
@@ -25,6 +26,8 @@ class StepUpRouter extends Component {
                         <Route exact path={routes.OPENING_ROUTE} render={(props) => <Opening {...props} />}/>
                         <Route path={routes.SIGN_UP_ROUTE}
                                render={(props) => <SignUp {...props} userService={this.state.userService}/>}/>
+                        <Route path={routes.SIGN_IN_ROUTE}
+                               render={(props) => <SignIn {...props} userService={this.state.userService}/>}/>
                         <Route path={routes.RESET_PASSWORD_ROUTE} render={(props) => <ResetPassword {...props} />}/>
                         <Route path={routes.HOME_ROUTE} render={(props) => <Home {...props} />}/>
                         <Route path={routes.HISTORY_ROUTE} render={(props) => <History {...props} />}/>

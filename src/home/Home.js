@@ -5,7 +5,9 @@ import {OPENING_ROUTE} from "../router/Routes";
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.user = props.user;
+        this.state = {
+            user: props.user
+        };
     }
 
     render() {

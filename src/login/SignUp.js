@@ -16,11 +16,20 @@ class SignUp extends Component {
     }
 
     async handleSubmit(e) {
-        e.preventDefault();
-        const updatedUser = await this.state.userService.signUp(this.nameInput.value, this.emailInput.value, this.passwordInput.value);
-        this.setState(state => ({
-            user: updatedUser
-        }));
+        //e.preventDefault();
+        const updatedUser = await this.state.userService
+            .signUp(this.nameInput.value, this.emailInput.value, this.passwordInput.value)
+            .catch(e => {
+                console.log(e);
+                return null;
+            });
+        if (updatedUser) {
+            this.setState(state => ({
+                user: updatedUser
+            }));
+        } else {
+            alert("Perhaps you should try again later...")
+        }
         this.props.history.push({OPENING_ROUTE});
     }
 

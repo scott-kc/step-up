@@ -11,19 +11,16 @@ class UserService {
 
     // returns a Promise<User>
     async signUp(name, email, password) {
-        alert(`${name} ${email} ${password}`);
+        console.log(`signing up ${name} ${email} ${password}`);
         ensureEmailAndPassword(email, password);
         let user = new User(name, email, password);
-        console.log("saving user: ", user.toString());
-        const savedUser = await this.userRepository.save(user);
-        console.log("saved used: ", savedUser);
-        return savedUser;
+        return await this.userRepository.save(user);
     }
 
-    async signIn(props) {
-        ensureEmailAndPassword(props);
-        let user = await this.userRepository.findByEmail(props.email);
-        validateCredentials(user, props);
+    async signIn(email, password) {
+        ensureEmailAndPassword(email, password);
+        let user = await this.userRepository.findByEmail(email);
+        validateCredentials(user, {password: password});
         return user;
     }
 
@@ -72,7 +69,6 @@ function validateCredentials(user, credentials) {
 }
 
 function isEmpty(s) {
-    alert(s);
     return !(s) && s !== '';
 }
 

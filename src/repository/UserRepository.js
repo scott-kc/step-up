@@ -1,31 +1,45 @@
-import * as firebase from 'firebase';
 import 'firebase/auth';
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBp3XN-umKusDA40vcNP_EAz1MB_fqBHHs",
-    authDomain: "step-up-5583b.firebaseapp.com",
-    databaseURL: "https://step-up-5583b.firebaseio.com",
-    projectId: "step-up-5583b",
-    storageBucket: "step-up-5583b.appspot.com",
-    messagingSenderId: "598409230273",
-    appId: "1:598409230273:web:efe9198b757730280c2140"
-};
+import admin from 'firebase-admin';
 
 const usersPath = 'users';
 
+const mockUser = {
+    name: "someone",
+    email: "someone@mail.com",
+    password: "secret"
+};
+
+
 class UserRepository {
     constructor() {
-        this.app = firebase.initializeApp(firebaseConfig);
-        this.db = firebase.database();
+        const serviceAccount = require("./step-up-5583b-firebase-adminsdk-tyt5q-abfb518444");
+        admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount),
+            databaseURL: "https://step-up-5583b.firebaseio.com"
+        });
+        //this.app = firebase.initializeApp(firebaseConfig);
+        this.db = admin.firestore();
     }
 
     save(user) {
-        return this.db.ref(`${usersPath}/${user.name}`).set(user);
+        let data = map(user);
+        //return this.db.collection(usersPath).doc(user.email).set(data);
+        return user;
     }
 
     findByEmail(email) {
-        return this.db.ref(`${usersPath}/${email}`).toJSON();
+        //return this.db.collection(usersPath).doc(email).get().toJSON();
+        return mockUser;
     }
+}
+
+function map(user) {
+    return user ? {
+            name: user.name,
+            email: user.email,
+            password: user.password
+        }
+        : {};
 }
 
 export default UserRepository;
