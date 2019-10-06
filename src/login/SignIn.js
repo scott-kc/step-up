@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import {Button, Col, Form, Row} from "react-bootstrap";
-import {HOME_ROUTE, OPENING_ROUTE} from "../router/Routes";
-import {Redirect} from "react-router";
+import {HOME_ROUTE} from "../router/Routes";
 
 class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: props.user,
-            redirect: false
+            user: props.user
         };
         this.emailInput = React.createRef();
         this.passwordInput = React.createRef();
@@ -23,8 +21,7 @@ class SignIn extends Component {
                 return null;
             });
         this.setState(state => ({
-            user: updatedUser,
-            redirect: true
+            user: updatedUser
         }));
         this.props.history.push(HOME_ROUTE);
     }

@@ -7,7 +7,7 @@ class SignUp extends Component {
         super(props);
         this.state = {
             user: props.user,
-            userService: props.userService ? props.userService : sneakyThrows(),
+            userService: props.userService ? props.userService : sneakyThrows()
         };
         this.nameInput = React.createRef();
         this.emailInput = React.createRef();

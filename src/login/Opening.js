@@ -8,7 +8,9 @@ import SignUpPrompt from "./SignUpPrompt";
 class Opening extends Component {
     constructor(props) {
         super(props);
-        this.user = props.user;
+        this.state = {
+            user: props.user
+        };
     }
 
     render() {
@@ -16,7 +18,7 @@ class Opening extends Component {
             <Row>
                 <Col>
                     <div>This is the Opening component</div>
-                    <SignIn user={this.user}/>
+                    <SignIn user={this.state.user}/>
                     <Link to={RESET_PASSWORD_ROUTE}>Forgot Password?</Link>
                     <SignUpPrompt/>
                 </Col>
