@@ -1,8 +1,5 @@
 function stepEntry() {
-    return {
-        date: new Date(),
-        stepCount: 0
-    };
+    return stepEntryUsing(new Date(), 0);
 }
 
 function stepEntryUsing(date, stepCount) {
@@ -14,7 +11,7 @@ function stepEntryUsing(date, stepCount) {
 
 function stepEntryFrom(entry) {
     if (!entry) {
-        return stepEntry;
+        return stepEntry();
     } else {
         return {
             date: entry.date ? entry.date : new Date(),
@@ -29,4 +26,4 @@ function increment(entry) {
     return entryCopy
 }
 
-export {stepEntry,stepEntryUsing, stepEntryFrom, increment};
+export {stepEntry, stepEntryUsing, stepEntryFrom, increment};

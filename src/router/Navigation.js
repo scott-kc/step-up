@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Col, Row} from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faChartBar, faCog, faHome} from '@fortawesome/free-solid-svg-icons'
-import {HISTORY_ROUTE, HOME_ROUTE} from "./Routes";
+import {HISTORY_ROUTE, HOME_ROUTE, SETTINGS_ROUTE} from "./Routes";
 
 function Navigation() {
     return (
@@ -42,7 +42,7 @@ function Navigation() {
             <Col>
                 <Row>
                     <Col>
-                        <Button href={"/"} variant="light">
+                        <Button href={SETTINGS_ROUTE} variant="light">
                             <Row>
                                 <Col>
                                     <FontAwesomeIcon icon={faCog}/>
