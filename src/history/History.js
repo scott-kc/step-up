@@ -3,7 +3,6 @@ import {Col, Row} from "react-bootstrap";
 import UserHeading from "../user/UserHeading";
 import StepChart from "./StepChart";
 import AverageSteps from "./AverageSteps";
-import {DEFAULT_GOAL} from "../user/User";
 import PersonalRecord from "./PersonalRecord";
 import Navigation from "../router/Navigation";
 
@@ -32,10 +31,10 @@ class History extends Component {
                     </Row>
                     <Row>
                         <Col sm={4} className={"w-50 p-1"}>
-                            <AverageSteps goal={DEFAULT_GOAL}/>
+                            <AverageSteps steps={this.state.user.steps}/>
                         </Col>
                         <Col sm={4} className={"w-50 p-1"}>
-                            <PersonalRecord />
+                            <PersonalRecord steps={this.state.user.steps}/>
                         </Col>
                     </Row>
                     <Row>

@@ -9,7 +9,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: null,
+            user: {},
             userService: getUserServiceInstance()
         };
         if (this.state.userService === null) {
@@ -20,7 +20,7 @@ class App extends Component {
     render() {
         return (
             <Container>
-                <StepUpRouter userService={this.state.userService}/>
+                <StepUpRouter userService={this.state.userService} user={this.state.user}/>
             </Container>
         );
     }

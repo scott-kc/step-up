@@ -32,7 +32,8 @@ class StepUpRouter extends Component {
                         <Route path={routes.RESET_PASSWORD_ROUTE} render={(props) => <ResetPassword {...props} />}/>
                         <Route path={routes.HOME_ROUTE}
                                render={(props) => <Home {...props} />}/>
-                        <Route path={routes.HISTORY_ROUTE} render={(props) => <History {...props} />}/>
+                        <Route path={routes.HISTORY_ROUTE}
+                               render={(props) => <History {...props} user={this.state.user}/>}/>
                         <Route path={routes.SETTINGS_ROUTE}
                                render={(props) => <Settings {...props} user={this.state.user}
                                                             userService={this.state.userService}/>}/>

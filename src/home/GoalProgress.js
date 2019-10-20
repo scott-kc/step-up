@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {CircularProgressbar} from 'react-circular-progressbar';
-import {Col} from "react-bootstrap";
 import {DEFAULT_GOAL} from "../user/User";
 
 function enrichProps(props) {

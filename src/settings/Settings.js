@@ -2,27 +2,13 @@ import React, {Component} from 'react';
 import {Col, Row} from "react-bootstrap";
 import {DEFAULT_GOAL, userFrom} from "../user/User";
 import Navigation from "../router/Navigation";
+import ConfigItem from "./ConfigItem";
 
-const GOAL_LABEL = "Set Goal";
-const DATA_RETENTION_LABEL = "Set Goal";
+const GOAL_LABEL = "Daily Step Goal";
+
+const DATA_RETENTION_LABEL = "Data retention";
 
 const DEFAULT_DATA_RENTENTION_IN_DAYS = 7;
-
-function ConfigItem(props) {
-    return (
-        <Row>
-            <Col>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Name:
-                        <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                    </label>
-                    <input type="submit" value="Submit"/>
-                </form>
-            </Col>
-        </Row>
-    );
-}
 
 class Settings extends Component {
     constructor(props) {
@@ -68,28 +54,11 @@ class Settings extends Component {
         return (
             <Row>
                 <Col>
-                    <Row>
-                        <Col className="">
-                            <form onSubmit={this.handleGoalSubmit}>
-                                <label>
-                                    {GOAL_LABEL}:
-                                    <input type="text" value={this.state.goal} onChange={this.handleGoalChange}/>
-                                </label>
-                                <input type="submit" value="Submit"/>
-                            </form>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <form onSubmit={this.handleRetentionSubmit}>
-                                <label>
-                                    {DATA_RETENTION_LABEL}:
-                                    <input type="text" value={this.state.dataRetention} onChange={this.handleRetentionChange}/>
-                                </label>
-                                <input type="submit" value="Submit"/>
-                            </form>
-                        </Col>
-                    </Row>
+                    <ConfigItem label={GOAL_LABEL} value={this.state.goal} handleSubmit={this.handleGoalSubmit}
+                                onChange={this.handleGoalChange}/>
+                    <ConfigItem label={DATA_RETENTION_LABEL} value={this.state.dataRetention + " days"}
+                                handleSubmit={this.handleRetentionSubmit}
+                                onChange={this.handleRetentionChange}/>
                     <Row>
                         <Col className={"p-3"}>
                             <Navigation/>

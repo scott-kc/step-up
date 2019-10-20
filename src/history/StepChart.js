@@ -19,6 +19,7 @@ function dateMinusDays(days) {
     return date;
 }
 
+const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 
 function StepChart(props) {
     let steps = props.steps ? props.steps : mockStepEntries;
@@ -36,9 +37,12 @@ function StepChart(props) {
     );
 }
 
-const isValidEntry = e => e && e.date && e.stepCount;
+function extractUserData(steps) {
+    return Array.isArray(steps) ?
+        steps.filter(isValidEntry).map(toDatum) : [];
+}
 
-const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+const isValidEntry = e => e && e.date && e.stepCount;
 
 const toDatum = (entry) => {
     let data
@@ -46,11 +50,5 @@ const toDatum = (entry) => {
     console.log(data);
     return data;
 };
-
-function extractUserData(user) {
-    let steps = mockStepEntries;//TODO use user.steps;
-    return Array.isArray(steps) ?
-        steps.filter(isValidEntry).map(toDatum) : [];
-}
 
 export default StepChart;
