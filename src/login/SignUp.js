@@ -21,7 +21,6 @@ class SignUp extends Component {
             .signUp(this.nameInput.value, this.emailInput.value, this.passwordInput.value)
             .catch(e => {
                 console.log(e);
-                return null;
             });
         if (updatedUser) {
             this.setState(state => ({

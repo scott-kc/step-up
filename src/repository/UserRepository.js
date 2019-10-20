@@ -1,35 +1,45 @@
-import 'firebase/auth';
-import admin from 'firebase-admin';
+import * as firebase from "firebase/app";
+
+// Add the Firebase services that you want to use
+import "firebase/auth";
+import "firebase/firestore";
+
 
 const usersPath = 'users';
 
-const mockUser = {
-    name: "someone",
-    email: "someone@mail.com",
-    password: "secret"
+// const mockUser = {
+//     name: "someone",
+//     email: "someone@mail.com",
+//     password: "secret"
+// };
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCGu6VPCdm9VofmdK-ZFEfxRbpH3R92Ao0",
+    authDomain: "step-up-24f08.firebaseapp.com",
+    databaseURL: "https://step-up-24f08.firebaseio.com",
+    projectId: "step-up-24f08",
+    storageBucket: "step-up-24f08.appspot.com",
+    messagingSenderId: "557965425780",
+    appId: "1:557965425780:web:a8fcab2c215d843232e521",
+    measurementId: "G-EJKYXSE81E"
 };
 
 
 class UserRepository {
     constructor() {
-        const serviceAccount = require("./step-up-5583b-firebase-adminsdk-tyt5q-abfb518444");
-        admin.initializeApp({
-            credential: admin.credential.cert(serviceAccount),
-            databaseURL: "https://step-up-5583b.firebaseio.com"
-        });
-        //this.app = firebase.initializeApp(firebaseConfig);
-        this.db = admin.firestore();
+        firebase.initializeApp(firebaseConfig);
+        this.db =  firebase.firestore();
     }
 
-    save(user) {
+    async save(user) {
         let data = map(user);
-        //return this.db.collection(usersPath).doc(user.email).set(data);
-        return user;
+        const saved = await this.db.collection(usersPath).doc(user.email).set(data);
+        console.log(saved);
+        return saved;
     }
 
     findByEmail(email) {
-        //return this.db.collection(usersPath).doc(email).get().toJSON();
-        return mockUser;
+        return this.db.collection(usersPath).doc(email).get().toJSON();
     }
 }
 

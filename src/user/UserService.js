@@ -1,5 +1,3 @@
-import {User} from "./User";
-
 const DEFAULT_NUMBER_OF_DAYS = 7;
 
 class UserService {
@@ -13,8 +11,9 @@ class UserService {
     async signUp(name, email, password) {
         console.log(`signing up ${name} ${email} ${password}`);
         ensureEmailAndPassword(email, password);
-        let user = new User(name, email, password);
-        return await this.userRepository.save(user);
+        let user = {name: name, email: email, password: password};
+        await this.userRepository.save(user);
+        return user;
     }
 
     async signIn(email, password) {
