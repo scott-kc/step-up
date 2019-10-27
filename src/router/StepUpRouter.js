@@ -21,7 +21,7 @@ class StepUpRouter extends Component {
 
     render() {
         return (
-            <Row>
+            <Row basename={process.env.PUBLIC_URL}>
                 <Col>
                     <BrowserRouter>
                         <Route exact path={routes.OPENING_ROUTE} render={(props) => <Opening {...props} />}/>
