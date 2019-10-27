@@ -7,12 +7,6 @@ import "firebase/firestore";
 
 const usersPath = 'users';
 
-// const mockUser = {
-//     name: "someone",
-//     email: "someone@mail.com",
-//     password: "secret"
-// };
-
 const firebaseConfig = {
     apiKey: "AIzaSyCGu6VPCdm9VofmdK-ZFEfxRbpH3R92Ao0",
     authDomain: "step-up-24f08.firebaseapp.com",
