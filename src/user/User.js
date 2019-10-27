@@ -5,7 +5,6 @@ class User {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.isLoggedIn = false;
         this.goal = 10000;
         this.steps = []; // define steps as a map of date to number
     }

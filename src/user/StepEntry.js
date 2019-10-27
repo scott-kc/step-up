@@ -20,10 +20,4 @@ function stepEntryFrom(entry) {
     }
 }
 
-function increment(entry) {
-    let entryCopy = stepEntryFrom(entry);
-    entryCopy.stepCount = entryCopy.stepCount + 1;
-    return entryCopy
-}
-
-export {stepEntry, stepEntryUsing, stepEntryFrom, increment};
+export {stepEntry, stepEntryUsing, stepEntryFrom};

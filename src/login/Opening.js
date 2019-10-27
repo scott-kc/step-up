@@ -17,7 +17,7 @@ class Opening extends Component {
         return (
             <Row>
                 <Col>
-                    <div>This is the Opening component</div>
+                    <h1>StepUp</h1>
                     <SignIn user={this.state.user}/>
                     <Link to={RESET_PASSWORD_ROUTE}>Forgot Password?</Link>
                     <SignUpPrompt/>
